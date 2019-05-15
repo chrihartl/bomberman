@@ -1,5 +1,9 @@
 FROM whatwedo/nginx-php70:latest
 
+RUN groupadd -g 999 appuser && \
+    useradd -r -u 999 -g appuser appuser
+USER appuser
+
 ADD . /var/www
 WORKDIR /var/www
 
